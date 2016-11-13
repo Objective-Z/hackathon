@@ -65,7 +65,7 @@ $(function () {
             // For more info about Current Conditions API go to http://apidev.accuweather.com/developers/locations
             var awxGetCurrentConditions = function (locationKey) {
                 currentConditionsUrl = "http://apidev.accuweather.com/currentconditions/v1/" + 
-                    locationKey + ".json?language=" + language + "&apikey=" + apiKey;
+                    locationKey + ".json?language=" + language + "&apikey=" + apiKey + "&details=true";
                 $.ajax({
                     type: "GET",
                     url: currentConditionsUrl,
@@ -78,12 +78,16 @@ $(function () {
                                 var conditions = data[0];
 								
                                 var temp = isMetric ? conditions.Temperature.Metric : conditions.Temperature.Imperial;
+								var humidity = conditions.RelativeHumidity;
                                 html = conditions.WeatherText + ", " + temp.Value + " " + temp.Unit;
+								html2 = "Relative humidity: " + humidity + "%";
                             }
                             else {
                                 html = "N/A";
+								html2 = "N/A";
                             }
                         $("#awxWeatherInfo").html(html);
+						$("#humidity").html(html2);
                         $("#awxWeatherUrl").html("<a href=" + currentConditionsUrl + ">" + currentConditionsUrl + "</a>");
                     }
                 });
@@ -101,5 +105,24 @@ $(function () {
                 var text = $("#awxSearchTextBox").val();
                 awxCityLookUp(text);
             });
+			
+			if (humidity >= 75){
+				$(".image-circle:nth-child(2)").toggle(".red");
+				$(".image-circle:nth-child(3)").toggle(".red");
+			}
+			else{
+				$(".image-circle").toggle(".green");
+			}
+			
+			if (temp.Value <= 60){
+				$(".temp").toggle(".blue");
+			}
+			else if ((temp.Value > 60) && (temp.Value <= 70)){
+				$(".temp").toggle(".green");
+			}
+			else{
+				$(".temp").toggle(".red");
+			}
+			
 			});
 			
