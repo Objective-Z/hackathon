@@ -1,0 +1,38 @@
+#background{
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100%;
+    opacity: 0.9;
+}
+.content{
+    margin-top: 100px;
+}
+.location_input{
+    padding: 20px;
+    margin-left: 5px;
+    border: 1px solid;
+    border-color:dimgray;
+}
+#heading{
+    font-weight: bold;
+    text-align: center;
+}
+#temperature{
+    font-size: 8em;
+    text-align: center;
+}
+p{
+    text-align: center;
+    font-size: 20px;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
