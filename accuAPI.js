@@ -106,7 +106,7 @@ $(function () {
                 awxCityLookUp(text);
             });
 			
-			if (humidity >= 75){
+			if (parseInt(humidity) >= 75){
 				$(".image-circle:nth-child(2)").toggle(".red");
 				$(".image-circle:nth-child(3)").toggle(".red");
 			}
@@ -114,10 +114,10 @@ $(function () {
 				$(".image-circle").toggle(".green");
 			}
 			
-			if (temp.Value <= 60){
+			if (parseInt(temp.Value) <= 60){
 				$(".temp").toggle(".blue");
 			}
-			else if ((temp.Value > 60) && (temp.Value <= 70)){
+			else if ((parseInt(temp.Value) > 60) && (parseInt(temp.Value) <= 70)){
 				$(".temp").toggle(".green");
 			}
 			else{
